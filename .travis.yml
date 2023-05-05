@@ -16,5 +16,8 @@ after_success:
   #Log in to the docker CLI
 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push 
+  - docker push davidhospodka/multi-client
+  - docker push davidhospodka/multi-server
+  - docker push davidhospodka/multi-worker
+  - docker push davidhosodka/multi-nginx
   
