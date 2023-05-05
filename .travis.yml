@@ -9,15 +9,15 @@ script:
   - docker run -e CI=true davidhospodka/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t davidhospodka/multi-client ./client
-  - docker build -t davidhospodka/multi-server ./server
-  - docker build -t davidhospodka/multi-worker ./worker
-  - docker build -t davidhospodka/multi-nginx ./nginx
+  - docker build -t hospicz/multi-client ./client
+  - docker build -t hospicz/multi-server ./server
+  - docker build -t hospicz/multi-worker ./worker
+  - docker build -t hospicz/multi-nginx ./nginx
   #Log in to the docker CLI
 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push davidhospodka/multi-client
-  - docker push davidhospodka/multi-server
-  - docker push davidhospodka/multi-worker
-  - docker push davidhosodka/multi-nginx
+  - docker push hospicz/multi-client
+  - docker push hospicz/multi-server
+  - docker push hospicz/multi-worker
+  - docker push hospicz/multi-nginx
   
