@@ -1,15 +1,4 @@
 sudo: required
-deploy:
-  region: "eu-west-1"
-  app: "multi-docker"
-  env: "MultiDocker-env"
-  provider: elasticbeanstalk
-  bucket_name: "elasticbeanstalk-eu-west-1-289546914006"
-  bucket_path: "docker-multi"
-  on:
-    branches: main
-  access_key_id: $AWS_ACCESS_KEY
-  secret_access_key: $AWS_SECRET_KEY
 services:
   - docker
 
@@ -32,3 +21,14 @@ after_success:
   - docker push hospicz/multi-worker
   - docker push hospicz/multi-nginx
   
+  deploy:
+  region: "eu-west-1"
+  app: "multi-docker"
+  env: "MultiDocker-env"
+  provider: elasticbeanstalk
+  bucket_name: "elasticbeanstalk-eu-west-1-289546914006"
+  bucket_path: "docker-multi"
+  on:
+    branches: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
