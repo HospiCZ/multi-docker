@@ -1,11 +1,15 @@
 sudo: required
-region: "eu-west-1"
-app: "multi-docker"
-env: "MultiDocker-env"
-bucket_name: "elasticbeanstalk-eu-west-1-289546914006"
-bucket_path: "docker-multi"
-access_key_id: $AWS_ACCESS_KEY
-secret_access_key: $AWS_SECRET_KEY
+deploy:
+  region: "eu-west-1"
+  app: "multi-docker"
+  env: "MultiDocker-env"
+  provider: elasticbeanstalk
+  bucket_name: "elasticbeanstalk-eu-west-1-289546914006"
+  bucket_path: "docker-multi"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
 services:
   - docker
 
